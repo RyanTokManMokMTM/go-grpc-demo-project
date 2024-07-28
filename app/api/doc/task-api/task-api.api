@@ -1,0 +1,67 @@
+syntax = "v1"
+
+info(
+    title: "Task API"
+    desc: "CRUD Task API"
+    author: "jackson.tmm"
+    email: "ryantokmanmokmtm@gmail.com"
+    version: "v1"
+)
+
+type (
+    CreateTaskReq {
+        TaskName string `json:"task_name"`
+    }
+    CreateTaskResp {
+        TaskId string `json:"task_id"`
+    }
+
+    UpdateTaskReq {
+        TaskId string `path:"task_id"`
+        TaskName string `json:"task_name"`
+    }
+
+    GetTaskInfoReq {
+        TaskId string `path:"task_id"`
+    }
+    GetTaskInfoResp {
+        TaskInfo
+    }
+    GetTaskListResp {
+        Tasks []TaskInfo `json:"tasks_list"`
+    }
+
+    DeleteTaskReq {
+        TaskId string `path:"task_id"`
+    }
+)
+
+type (
+    TaskInfo {
+        TaskId string `path:"task_id"`
+        TaskName string `json:"task_name"`
+    }
+)
+
+@server(
+    jwt: Auth
+    group: task
+)
+service todo-api {
+    @handler CreateTask // TODO: replace handler name and delete this comment
+    post /task(CreateTaskReq) returns (CreateTaskResp)
+
+    @handler UpdateTask // TODO: replace handler name and delete this comment
+    put /:task_id (UpdateTaskReq)
+
+    @handler TaskInfo // TODO: replace handler name and delete this comment
+    get /:task_id (GetTaskInfoReq) returns (GetTaskInfoResp)
+
+    @handler TaskList // TODO: replace handler name and delete this comment
+    get /list() returns (GetTaskListResp)
+
+    @handler DeleteTask // TODO: replace handler name and delete this comment
+    delete /:taskId (DeleteTaskReq)
+
+
+}

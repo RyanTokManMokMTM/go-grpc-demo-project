@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package task;
+option go_package = './task';
+
+message CreateTaskReq {
+  string taskName = 1;
+  int32 userId = 2;
+}
+message CreateTaskResp {
+  string taskId = 1;
+}
+
+message TaskInfoReq {
+  string taskId = 1;
+  uint32 userId = 2;
+}
+message TaskInfoResp {
+  string taskId = 1;
+  string taskName = 2;
+
+}
+
+service TaskRPC {
+  rpc CreateTask (CreateTaskReq) returns (CreateTaskResp);
+  rpc GetTaskInfo (TaskInfoReq) returns (TaskInfoResp);
+}

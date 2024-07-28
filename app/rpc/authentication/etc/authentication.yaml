@@ -1,0 +1,12 @@
+Name: authentication.rpc
+ListenOn: 0.0.0.0:8081
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: authentication.rpc
+MySQL:
+  Datasource: "root:admin@tcp(127.0.0.1:3306)/RPCDemo?charset=utf8mb4&parseTime=True&loc=Local"
+Salt: W4tiDEeWlwxlRPYYRRMhJ65piS1ochvMymwfVdumittPoSxhkHNnVLe6m12C4v15
+JWTAuth:
+  AccessSecret: 2BNVfmf0WtyX1HQmzYx5rOKLzlHBEPRX729pZ0gpxujnaikoRRCF78T8fKDNTLWy
+  AccessExpire: 36800

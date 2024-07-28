@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package authentication;
+option go_package = "./authentication";
+
+message AuthenticationReq {
+  string username = 1;
+  string password = 2;
+}
+
+message AuthenticationResp {
+  string token = 1; //jwt token
+}
+
+service AuthRPC {
+  rpc Authentication(AuthenticationReq) returns (AuthenticationResp);
+}

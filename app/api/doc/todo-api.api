@@ -1,0 +1,12 @@
+syntax = "v1"
+import "../user-api/*.api"
+import "../authentication-api/*.api"
+import "../task-api/*.api"
+
+info(
+    title: "TODO List API app(demo)"
+    desc: "A app of the rpc service(demo)"
+    author: "jackson.tmm"
+    email: "ryantokmanmokmtm@gmail.com"
+    version: "v1"
+)

@@ -1,0 +1,8 @@
+Name: task.rpc
+ListenOn: 0.0.0.0:8082
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: task.rpc
+MySQL:
+  Datasource: "root:admin@tcp(127.0.0.1:3306)/RPCDemo?charset=utf8mb4&parseTime=True&loc=Local"
