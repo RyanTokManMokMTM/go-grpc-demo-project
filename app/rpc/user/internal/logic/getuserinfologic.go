@@ -26,7 +26,7 @@ func NewGetUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 func (l *GetUserInfoLogic) GetUserInfo(in *user.UserInfoReq) (*user.UserInfoResp, error) {
 	// todo: add your logic here and delete this line
 	//TODO: Get User Info with in param
-	u, err := l.svcCtx.DAO.FindUser(in.UserId, l.ctx)
+	u, err := l.svcCtx.DAO.FindUser(uint(in.UserId), l.ctx)
 	if err != nil {
 		logx.Error(err)
 		return nil, err
@@ -36,6 +36,7 @@ func (l *GetUserInfoLogic) GetUserInfo(in *user.UserInfoReq) (*user.UserInfoResp
 	// Check error
 	// Return error
 	return &user.UserInfoResp{
+		Id:       int32(u.ID),
 		UserName: u.UserName,
 	}, nil
 }

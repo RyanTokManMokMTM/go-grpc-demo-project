@@ -1,0 +1,45 @@
+syntax = "v1"
+
+info (
+	title:   "Task API"
+	desc:    "CRUD Task API"
+	author:  "jackson.tmm"
+	email:   "ryantokmanmokmtm@gmail.com"
+	version: "v1"
+)
+
+type (
+	CreateTaskReq {
+		TaskName string `json:"task_name"`
+	}
+	CreateTaskResp {
+		TaskId string `json:"task_id"`
+	}
+	GetTaskInfoReq {
+		TaskId string `path:"task_id"`
+	}
+	GetTaskInfoResp {
+		TaskInfo
+	}
+)
+
+type (
+	TaskInfo {
+		TaskId   string `path:"task_id"`
+		TaskName string `json:"task_name"`
+	}
+)
+
+@server (
+	jwt:    Auth
+	group:  task
+	prefix: /api/v1
+)
+service APIDemo {
+	@handler CreateTask // TODO: replace handler name and delete this comment
+	post /task (CreateTaskReq) returns (CreateTaskResp)
+
+	@handler TaskInfo // TODO: replace handler name and delete this comment
+	get /:task_id (GetTaskInfoReq) returns (GetTaskInfoResp)
+}
+

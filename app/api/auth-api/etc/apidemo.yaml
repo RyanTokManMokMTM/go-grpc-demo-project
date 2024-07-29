@@ -1,0 +1,8 @@
+Name: APIDemo
+Host: 0.0.0.0
+Port: 3001
+AuthRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: authentication.rpc

@@ -2,7 +2,9 @@ package logic
 
 import (
 	"context"
+	"errors"
 	"go-rpc-todo-list_/app/common/cryptox"
+	"gorm.io/gorm"
 
 	"go-rpc-todo-list_/app/rpc/user/internal/svc"
 	"go-rpc-todo-list_/app/rpc/user/types/user"
@@ -27,7 +29,7 @@ func NewCreateUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Create
 func (l *CreateUserLogic) CreateUser(in *user.CreateUserReq) (*user.CreateUserResp, error) {
 	logx.Info(in)
 	//TODO: Find a user with 'in' params
-	if _, err := l.svcCtx.DAO.FindUserByUserName(in.Username, l.ctx); err != nil {
+	if _, err := l.svcCtx.DAO.FindUserByUserName(in.Username, l.ctx); err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		logx.Error(err)
 		return nil, err
 	}

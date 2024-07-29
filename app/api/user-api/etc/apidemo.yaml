@@ -1,0 +1,11 @@
+Name: APIDemo
+Host: 0.0.0.0
+Port: 3000
+Auth:
+  AccessSecret: 2BNVfmf0WtyX1HQmzYx5rOKLzlHBEPRX729pZ0gpxujnaikoRRCF78T8fKDNTLWy
+  AccessExpire: 36800
+UserRPC:
+  Etcd: # from UserRPC config
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc

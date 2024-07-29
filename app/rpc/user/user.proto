@@ -12,11 +12,14 @@ message CreateUserResp{
 }
 
 message UserInfoReq {
-  string userId = 1;
+  uint32 userId = 1;
 }
 
 message UserInfoResp {
-  string userName = 1;
+  int32 Id = 1;
+  string userName = 2;
+
+
 }
 
 

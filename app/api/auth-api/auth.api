@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info (
+	title:   "Auth API"
+	desc:    "Auth API"
+	author:  "jackson.tmm"
+	email:   "ryantokmanmokmtm@gmail.com"
+	version: "v1"
+)
+
+type (
+	LoginReq {
+		UserName string `json:"user_name"`
+		Password string `json:"password"`
+	}
+	LoginResp {
+		token string `json:"token"`
+	}
+)
+
+@server (
+	group:  authentication
+	prefix: /api/v1
+)
+service APIDemo {
+	@handler login
+	post /login (LoginReq) returns (LoginResp)
+}
+

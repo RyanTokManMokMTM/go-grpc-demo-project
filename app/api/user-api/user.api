@@ -1,0 +1,40 @@
+syntax = "v1"
+
+info (
+	title:   "User API app(demo)"
+	desc:    "A app of the rpc service(demo)"
+	author:  "jackson.tmm"
+	email:   "ryantokmanmokmtm@gmail.com"
+	version: "v1"
+)
+
+type (
+	ReqigsterReq {
+		UserName string `json:"user_name"`
+		Password string `json:"password"`
+	}
+	UserInfoResp {
+		Id       uint   `json:"id"`
+		UserName string `json:"user_name"`
+	}
+)
+
+@server (
+	group:  user
+	prefix: /api/v1
+)
+service APIDemo {
+	@handler register // TODO: replace handler name and delete this comment
+	post /register (ReqigsterReq)
+}
+
+@server (
+	jwt:    Auth
+	group:  user
+	prefix: /api/v1
+)
+service APIDemo {
+	@handler userInfo
+	get /userInfo returns (UserInfoResp)
+}
+

@@ -7,7 +7,7 @@ import (
 
 type IDAO interface {
 	CreateUser(userName, password string, ctx context.Context) error
-	FindUser(userId string, ctx context.Context) (*models.User, error)
+	FindUser(userId uint, ctx context.Context) (*models.User, error)
 	FindUserByUserName(userName string, ctx context.Context) (*models.User, error)
 
 	CreateTask(name string, uid uint, ctx context.Context) (*models.Task, error)

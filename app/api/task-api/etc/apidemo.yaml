@@ -1,0 +1,11 @@
+Name: APIDemo
+Host: 0.0.0.0
+Port: 3002
+Auth:
+  AccessSecret: 2BNVfmf0WtyX1HQmzYx5rOKLzlHBEPRX729pZ0gpxujnaikoRRCF78T8fKDNTLWy
+  AccessExpire: 36800
+TaskRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: task.rpc

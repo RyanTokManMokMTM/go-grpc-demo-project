@@ -27,10 +27,12 @@ func (D *DAO) CreateUser(userName, password string, ctx context.Context) error {
 	return u.CreateUser(D.db, ctx)
 }
 
-func (D *DAO) FindUser(userId string, ctx context.Context) (*models.User, error) {
+func (D *DAO) FindUser(userId uint, ctx context.Context) (*models.User, error) {
 	//TODO implement me
 	u := &models.User{
-		Uuid: userId,
+		Model: gorm.Model{
+			ID: userId,
+		},
 	}
 	if err := u.FindOne(D.db, ctx); err != nil {
 		return nil, err

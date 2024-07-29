@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"go-rpc-todo-list_/app/common/cryptox"
+	"go-rpc-todo-list_/app/common/ctxtool"
 	"go-rpc-todo-list_/app/common/jwtx"
 	"strings"
 	"time"
@@ -44,8 +45,9 @@ func (l *AuthenticationLogic) Authentication(in *authentication.AuthenticationRe
 
 	now := time.Now().Unix()
 	exp := l.svcCtx.Config.JWTAuth.AccessExpire
+
 	payLoad := map[string]interface{}{
-		"user_id": u.Uuid,
+		ctxtool.CTXJWTUserID: u.ID,
 	}
 
 	token, err := jwtx.GenerateToken(now, exp, l.svcCtx.Config.JWTAuth.AccessSecret, payLoad)
